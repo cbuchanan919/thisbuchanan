@@ -7,12 +7,6 @@ const path = require('path');
 app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use(express.static('public'));
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
-app.get("/scan-qr", (req, res) => {
-    res.render("pages/scan-qr");
-})
 
 app.post('/', (req, res)=>{
     const {name} = req.body;
@@ -20,9 +14,7 @@ app.post('/', (req, res)=>{
 })
 
 app.get("/", (req, res) => {
-    // res.status(200);
-    // res.send("Welcome to the root URL of the Server");
-    res.render("pages/index")
+    res.status(200).send("Welcome to the root URL of the Server")
 })
 
 
@@ -32,7 +24,7 @@ app.get("/api", (req, res) => {
 
 app.get('/hello', (req, res)=>{
     res.set('Content-Type', 'text/html');
-    res.status(200).send("<h1>Hello GFG Learner!</h1>");
+    res.status(200).send("<h1>Hello World!</h1>");
 });
 
 app.listen(PORT, (error) =>{ 
